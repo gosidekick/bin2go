@@ -110,5 +110,5 @@ func main() {
 	}
 	file.WriteString(",\n}")
 	out, _ := format.Source(file.Bytes())
-	writeToFile("bi2go.go", out)
+	writeToFile("bin2go.go", out)
 }
