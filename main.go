@@ -17,7 +17,7 @@ import (
 type config struct {
 	OutputFile  string `cfg:"o" cfgRequired:"true" cfgHelper:"output file"`
 	PathList    string `cfg:"path" cfgRequired:"true" cfgHelper:"path list"`
-	PackageName string `cfg:"pkg" cfgHelper:"package name"`
+	PackageName string `cfg:"pkg" cfgHelper:"package name" cfgDefault:"bin2go"`
 }
 
 var files = make(map[string]bool)
@@ -75,13 +75,18 @@ func main() {
 	var bff []byte
 	file := bytes.NewBuffer(bff)
 
-	file.WriteString("package b2go\n\n")
+	file.WriteString("package " + cfg.PackageName + "\n\n")
+	file.WriteString("import \"os\"\n\n")
 
-	b := "var b = []byte{\n"
+	b := "var b = [][]byte{\n"
 	file.WriteString(b)
+
+	var fileList []string
 
 	n := ""
 	for _, v := range f {
+		fileList = append(fileList, v)
+
 		if n != "" {
 			file.WriteString(n)
 		}
@@ -109,6 +114,26 @@ func main() {
 		file.WriteString(",\n}")
 	}
 	file.WriteString(",\n}")
-	out, _ := format.Source(file.Bytes())
-	writeToFile("bin2go.go", out)
+
+	file.WriteString(`
+func getBytes(name string) ([]byte, error) {
+switch name {
+`)
+
+	for k, v := range fileList {
+		m := fmt.Sprintf("case %q:\nreturn b[%v], nil\n", v, k)
+		file.WriteString(m)
+	}
+
+	file.WriteString(`
+default:
+return nil, os.ErrNotExist
+}
+}
+`)
+	out, err := format.Source(file.Bytes())
+	if err != nil {
+		log.Fatal(err)
+	}
+	writeToFile(cfg.OutputFile, out)
 }
