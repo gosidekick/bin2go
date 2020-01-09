@@ -30,7 +30,7 @@ func processPath(path string, info os.FileInfo, err error) error {
 	if info.IsDir() {
 		return nil
 	}
-	files[path] = true
+	files[filepath.Base(path)] = true
 	return nil
 }
 
