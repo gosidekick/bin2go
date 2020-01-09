@@ -30,7 +30,7 @@ func processPath(path string, info os.FileInfo, err error) error {
 	if info.IsDir() {
 		return nil
 	}
-	files[filepath.Base(path)] = true
+	files[path] = true
 	return nil
 }
 
@@ -85,7 +85,7 @@ func main() {
 
 	n := ""
 	for _, v := range f {
-		fileList = append(fileList, v)
+		fileList = append(fileList, filepath.Base(v))
 
 		if n != "" {
 			file.WriteString(n)
