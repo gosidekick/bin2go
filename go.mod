@@ -1,4 +1,4 @@
-module github.com/crgimenes/bin2go
+module github.com/gosidekick/bin2go
 
 go 1.13
 
