@@ -116,7 +116,7 @@ func main() {
 	file.WriteString(",\n}")
 
 	file.WriteString(`
-func getBytes(name string) ([]byte, error) {
+func GetBytes(name string) ([]byte, error) {
 switch name {
 `)
 
