@@ -1,2 +1,4 @@
 github.com/crgimenes/goconfig v1.2.1 h1:179CEiHWYDq+dwXSGumwuCRJRPt9+H15TNjuHfXh0vw=
 github.com/crgimenes/goconfig v1.2.1/go.mod h1:NLkiEPjGZF4p1jzt3S7stOW7z/MJqvCRwJuDmC7b8fw=
+github.com/gorilla/mux v1.7.3 h1:gnP5JzjVOuiZD07fKKToCAOjS0yOpj/qPETTXCCS6hw=
+github.com/gorilla/mux v1.7.3/go.mod h1:1lud6UwP+6orDFRuTfBEV8e9/aOM/c4fVVCaMa2zaAs=
