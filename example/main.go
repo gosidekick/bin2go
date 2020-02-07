@@ -28,7 +28,16 @@ func showPage(w http.ResponseWriter, name string, data interface{}) {
 }
 
 func handleMain(w http.ResponseWriter, r *http.Request) {
-	showPage(w, "index.html", nil)
+	type data struct {
+		Title   string
+		Comment string
+	}
+	d := data{
+		Title:   "Golang",
+		Comment: "The Gophers programming language ;D",
+	}
+
+	showPage(w, "index.html", d)
 }
 
 func handleFile(w http.ResponseWriter, r *http.Request) {
