@@ -26,3 +26,7 @@ Put the binary (.exe for example) into the PATH (for Windows Users)
 or
 
 Point to the PATH using export PATH=$PATH:/place/with/the/file/bin2go.exe (for Linux users)
+
+<b> Checkin if your path are correct.
+  
+  $ echo $PATH
