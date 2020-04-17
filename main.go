@@ -128,16 +128,7 @@ switch name {
 	file.WriteString(`default:
 return nil, os.ErrNotExist
 }
-}
-
-var listFiles = []string{
-`)
-	// create file list (todo: remove and use file tree)
-	for _, v := range fileList {
-		m := fmt.Sprintf("%q,\n", v)
-		file.WriteString(m)
-	}
-	file.WriteString("}\n")
+}`)
 	out, err := format.Source(file.Bytes())
 	if err != nil {
 		log.Fatal(err)

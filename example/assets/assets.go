@@ -2399,8 +2399,3 @@ func GetBytes(name string) ([]byte, error) {
 		return nil, os.ErrNotExist
 	}
 }
-
-var listFiles = []string{
-	"gosidekick.png",
-	"index.html",
-}
