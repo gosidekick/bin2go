@@ -7,7 +7,7 @@ go:
 
 env:
     global:
-        - CC_TEST_REPORTER_ID=f738f4bdd76189a663a6454fbf66c8f4596b52e6d188d67da76b45d57d2cce21
+        - CC_TEST_REPORTER_ID=fd73fa5018aabf8aa31921b62ed8a6ce95e039dddd8d33534c238a1cf2900cad
         - GIT_COMMITTED_AT=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then git log -1 --pretty=format:%ct; else git log -1 --skip 1 --pretty=format:%ct; fi)
 
 before_script:
