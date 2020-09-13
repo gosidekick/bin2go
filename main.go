@@ -11,7 +11,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/crgimenes/goconfig"
+	"github.com/gosidekick/goconfig"
 )
 
 type config struct {
