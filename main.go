@@ -67,7 +67,7 @@ func main() {
 	}
 
 	var f []string
-	for k, _ := range files {
+	for k := range files {
 		f = append(f, k)
 	}
 	sort.Strings(f)
@@ -133,5 +133,8 @@ return nil, os.ErrNotExist
 	if err != nil {
 		log.Fatal(err)
 	}
-	writeToFile(cfg.OutputFile, out)
+	err = writeToFile(cfg.OutputFile, out)
+	if err != nil {
+		log.Fatal(err)
+	}
 }

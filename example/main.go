@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"path/filepath"
 	"strconv"
@@ -46,7 +47,11 @@ func handleFile(w http.ResponseWriter, r *http.Request) {
 	b, err := assets.GetBytes(name)
 	if err != nil {
 		w.WriteHeader(404)
-		w.Write([]byte("404 file not found"))
+		log.Println(err)
+		_, err = w.Write([]byte("404 file not found"))
+		if err != nil {
+			log.Println(err)
+		}
 		return
 	}
 
@@ -61,7 +66,10 @@ func handleFile(w http.ResponseWriter, r *http.Request) {
 
 	}
 	w.Header().Set("Content-Type", t)
-	w.Write(b)
+	_, err = w.Write(b)
+	if err != nil {
+		log.Println(err)
+	}
 }
 
 func main() {
